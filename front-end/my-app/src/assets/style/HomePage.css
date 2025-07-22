@@ -1,0 +1,124 @@
+
+.homepage-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: #fff;
+}
+
+.homepage-title {
+  font-size: 32px;
+  font-weight: bold;
+  background: linear-gradient(to right, #1976d2, #1e40af);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 24px;
+}
+
+
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.card {
+  position: relative;
+  flex: 1 1 calc(25% - 20px);
+  max-width: calc(25% - 20px);
+  height: 220px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card-header {
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 50px;
+}
+
+.card:hover .card-overlay {
+  opacity: 1;
+}
+
+.card:hover .card-header {
+  transform: translateY(-168px);
+}
+
+.card-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.card-menu li {
+  margin: 6px 0;
+}
+
+.card-menu a,
+.clickable-link {
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.card-menu a:hover,
+.clickable-link:hover {
+  color: #ccc;
+
+  text-decoration: none;
+}
+
+.card-footer {
+  display: none;
+}
+
+button {
+  padding: 6px 12px;
+  border: none;
+  background-color: #1e40af;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3b82f6;
+}

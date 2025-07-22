@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5b60bc77.css",
+    "main.js": "/static/js/main.88c2839e.js",
+    "static/media/logo.png": "/static/media/logo.27c533c635a639c77c55.png",
+    "static/media/business.jpg": "/static/media/business.6011b1143fc653cf8261.jpg",
+    "static/media/research.jpg": "/static/media/research.c5dc2cfecb56f474637c.jpg",
+    "static/media/logo1.png": "/static/media/logo1.cbc22c649e06ab539cea.png",
+    "static/media/teaching.jpg": "/static/media/teaching.9e09fd88a73acfd50291.jpg",
+    "static/media/department.jpg": "/static/media/department.0c484b73dbaaf22a3102.jpg",
+    "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/index.html",
+    "main.5b60bc77.css.map": "/static/css/main.5b60bc77.css.map",
+    "main.88c2839e.js.map": "/static/js/main.88c2839e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5b60bc77.css",
+    "static/js/main.88c2839e.js"
+  ]
+}

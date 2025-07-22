@@ -1,0 +1,83 @@
+/* 🌟 Umumiy o‘ram */
+.page-content-wrapper {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #333;
+  animation: fadeInText 0.8s ease-in-out;
+  padding: 20px;
+  background: #fcfcfc;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s ease;
+}
+/* * 🖼 Rasm konteyneri * */
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  animation: fadeInScale 1s ease-in-out;
+  transition: transform 0.3s ease;
+}
+
+.image-container img:hover {
+  transform: scale(1.02);
+}
+
+/* 📜 Paragraf matnlar */
+.page-content-wrapper p {
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+/* 🔠 Sarlavhalar */
+.page-content-wrapper h1,
+.page-content-wrapper h2,
+.page-content-wrapper h3 {
+  font-weight: bold;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+/* 🔗 Linklar */
+.page-content-wrapper a {
+  color: #007acc;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+.page-content-wrapper a:hover {
+  color: #005a9e;
+}
+
+/* ✨ Animatsiyalar */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInText {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
