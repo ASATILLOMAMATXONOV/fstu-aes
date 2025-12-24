@@ -111,7 +111,10 @@ const CarouselPage = () => {
 
       <hr className="my-6 border-t-2 border-gray-300" />
 
-      <h3 className="text-xl font-semibold text-gray-800">📦 Saqlangan Rasmlar</h3>
+      <h3 className="text-xl font-semibold text-gray-800">
+        📦 Saqlangan Rasmlar
+      </h3>
+
       {allBanners.length > 0 ? (
         allBanners.map((banner) => (
           <div
@@ -119,7 +122,9 @@ const CarouselPage = () => {
             className="border border-gray-300 rounded-md p-4 mb-6 shadow-sm bg-white"
           >
             <div className="flex justify-between items-center mb-2">
-              <p className="text-sm text-gray-700 font-mono">🆔 ID: {banner.id}</p>
+              <p className="text-sm text-gray-700 font-mono">
+                🆔 ID: {banner.id}
+              </p>
               <button
                 onClick={() => handleDelete(banner.id)}
                 className="px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700"

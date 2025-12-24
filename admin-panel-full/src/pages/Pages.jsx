@@ -35,13 +35,11 @@ const Pages = () => {
     position: "",
   });
 
-  // 📂 Barcha sahifalarni kategoriya bo‘yicha olish
+  // 📂 Sahifalarni kategoriya bo‘yicha olish
   const fetchPages = async () => {
     try {
       const res = await fetch(
-        `${BASE_API_URL}/api/pages/category/${encodeURIComponent(
-          selectedCategory
-        )}`
+        `${BASE_API_URL}/api/pages/category/${encodeURIComponent(selectedCategory)}`
       );
       const data = await res.json();
       setPageList(data);
@@ -50,14 +48,12 @@ const Pages = () => {
     }
   };
 
-  // 📂 Menyularni olish (jadvaldan)
+  // 📂 Menyularni olish
   const fetchMenus = async () => {
     if (!selectedCategory) return;
     try {
       const res = await fetch(
-        `${BASE_API_URL}/api/pages/menus/${encodeURIComponent(
-          selectedCategory
-        )}`
+        `${BASE_API_URL}/api/pages/menus/${encodeURIComponent(selectedCategory)}`
       );
       const data = await res.json();
       setMenuOptions(data);
@@ -71,7 +67,6 @@ const Pages = () => {
     try {
       const res = await fetch(`${BASE_API_URL}/api/fanlar`);
       const data = await res.json();
-      console.log("📘 Fanlar ro‘yxati:", data);
 
       const normalized = data.map((fan) => ({
         id: fan.id,
@@ -138,10 +133,14 @@ const Pages = () => {
       menu: menu || "",
     };
 
-    console.log("📤 Yuborilayotgan payload:", payload);
+    const endpoint =
+      selectedCategory === "➕ YANGI SAHIFA" ||
+      selectedCategory === "➕ FANLARGA MA'LUMOT QO‘SHISH"
+        ? `${BASE_API_URL}/api/newpages`
+        : `${BASE_API_URL}/api/pages`;
 
     try {
-      const res = await fetch(`${BASE_API_URL}/api/pages`, {
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -159,19 +158,17 @@ const Pages = () => {
           position: "",
         });
         setMenu("");
-        await fetchPages();
+        fetchPages();
       } else {
         const errorData = await res.json();
-        console.error("❌ Saqlashdagi xatolik:", errorData);
         alert("❌ Saqlashda xatolik: " + errorData.error);
       }
     } catch (err) {
-      console.error("❌ Server xatosi:", err);
       alert("❌ Server xatoligi: " + err.message);
     }
   };
 
-  // 🔄 Kategoriya bo‘lganda menularni yuklash
+  // 🔄 Kategoriya o‘zgarganda
   useEffect(() => {
     if (selectedCategory === "➕ FANLARGA MA'LUMOT QO‘SHISH") {
       fetchFanlar();
@@ -186,14 +183,14 @@ const Pages = () => {
 
   return (
     <div className="p-4 space-y-6">
-      <h2 className="text-2xl font-bold mb-4">➕ FANLARGA MA'LUMOT QO‘SHISH</h2>
+      <h2 className="text-2xl font-bold mb-4">➕ Sahifa qo‘shish</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[...defaultCategories, ...customCategories.map((c) => c.name)].map(
           (cat, i) => (
             <button
               key={cat + i}
-              className={`px-4 py-2 border rounded-xl font-semibold transition-all flex items-center gap-2 ${
+              className={`px-4 py-2 border rounded-xl font-semibold ${
                 selectedCategory === cat
                   ? "bg-blue-600 text-white"
                   : "bg-white hover:bg-blue-50"
@@ -208,62 +205,6 @@ const Pages = () => {
 
       {selectedCategory && (
         <div className="bg-white p-4 rounded-xl shadow space-y-6">
-          <h3 className="text-lg font-semibold">
-            {selectedCategory === "➕ FANLARGA MA'LUMOT QO‘SHISH"
-              ? `${selectedCategory} - kontent kiritish`
-              : `${selectedCategory} bo‘limidagi menyular:`}
-          </h3>
-
-          {selectedCategory === "➕ YANGI SAHIFA" && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <input
-                type="file"
-                accept="image/*"
-                className="border p-2 rounded w-full"
-                onChange={handleImageUpload}
-              />
-              <input
-                type="text"
-                placeholder="Telefon raqami"
-                className="border p-2 rounded w-full"
-                value={newPageData.phone}
-                onChange={(e) =>
-                  setNewPageData({ ...newPageData, phone: e.target.value })
-                }
-              />
-              <input
-                type="email"
-                placeholder="Email manzili"
-                className="border p-2 rounded w-full"
-                value={newPageData.email}
-                onChange={(e) =>
-                  setNewPageData({ ...newPageData, email: e.target.value })
-                }
-              />
-              <input
-                type="text"
-                placeholder="Google Scholar havolasi"
-                className="border p-2 rounded w-full"
-                value={newPageData.scholar_link}
-                onChange={(e) =>
-                  setNewPageData({
-                    ...newPageData,
-                    scholar_link: e.target.value,
-                  })
-                }
-              />
-              <input
-                type="text"
-                placeholder="Lavozimi"
-                className="border p-2 rounded w-full"
-                value={newPageData.position}
-                onChange={(e) =>
-                  setNewPageData({ ...newPageData, position: e.target.value })
-                }
-              />
-            </div>
-          )}
-
           {selectedCategory !== "➕ YANGI SAHIFA" && (
             <select
               className="border p-2 rounded w-full"
@@ -284,31 +225,18 @@ const Pages = () => {
 
           {["uz", "ru", "en"].map((lang) => (
             <div key={lang}>
-              <label className="font-medium text-sm block mb-1">
-                {lang === "uz"
-                  ? "Sarlavha (Oʻzbekcha)"
-                  : lang === "ru"
-                  ? "Заголовок (Russian)"
-                  : "Title (English)"}
-              </label>
               <input
                 type="text"
                 className="border p-2 rounded w-full mb-2"
-                value={titles[lang] || ""}
+                placeholder={`Title (${lang})`}
+                value={titles[lang]}
                 onChange={(e) =>
                   setTitles({ ...titles, [lang]: e.target.value })
                 }
               />
-              <label className="font-medium text-sm block mb-1">
-                {lang === "uz"
-                  ? "Kontent (Oʻzbekcha)"
-                  : lang === "ru"
-                  ? "Контент (Russian)"
-                  : "Content (English)"}
-              </label>
               <ReactQuill
                 theme="snow"
-                value={contents[lang] || ""}
+                value={contents[lang]}
                 onChange={(val) =>
                   setContents({ ...contents, [lang]: val })
                 }
@@ -316,11 +244,10 @@ const Pages = () => {
                 formats={quillFormats}
                 style={{ height: "250px" }}
               />
-              <br />
             </div>
           ))}
 
-          <div className="flex justify-end pt-2">
+          <div className="flex justify-end">
             <button
               onClick={handleSave}
               className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
@@ -341,13 +268,7 @@ const quillModules = {
       ["bold", "italic", "underline", "strike"],
       ["blockquote", "code-block"],
       [{ list: "ordered" }, { list: "bullet" }],
-      [{ script: "sub" }, { script: "super" }],
-      [{ indent: "-1" }, { indent: "+1" }],
-      [{ direction: "rtl" }],
-      [{ align: [] }],
       [{ color: [] }, { background: [] }],
-      [{ font: [] }],
-      [{ size: ["small", false, "large", "huge"] }],
       ["link", "image", "video"],
       ["clean"],
     ],
@@ -356,8 +277,6 @@ const quillModules = {
 
 const quillFormats = [
   "header",
-  "font",
-  "size",
   "bold",
   "italic",
   "underline",
@@ -366,10 +285,6 @@ const quillFormats = [
   "code-block",
   "list",
   "bullet",
-  "script",
-  "indent",
-  "direction",
-  "align",
   "color",
   "background",
   "link",

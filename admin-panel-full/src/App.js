@@ -9,7 +9,7 @@ import NewsEvent from "./pages/NewsEvent";
 import Page from "./pages/Pages";
 import Statistics from "./pages/Statistics";
 import EditPanel from "./pages/EditPanel";
-import ImageInsertModal from "./components/ImageInsertModal";  
+import ImageInsertModal from "./components/ImageInsertModal";
 import Newbut from "./pages/Newbut";
 import Side from "./pages/Side";
 import Fanlar from "./pages/Fanlar";
@@ -39,7 +39,7 @@ function App() {
         <Route path="NewsEvent" element={<NewsEvent />} />
         <Route path="Page" element={<Page />} />
         <Route path="Statistics" element={<Statistics />} />
-        <Route path="/menus/edit/:category/:id" element={<EditPanel />} />
+        <Route path="menus/edit/:category/:id" element={<EditPanel />} />
         <Route path="image-insert" element={<ImageInsertModal />} />
         <Route path="Newbut" element={<Newbut />} />
         <Route path="Side" element={<Side />} />
@@ -48,7 +48,7 @@ function App() {
         <Route path="Topmenu" element={<Topmenu />} />
       </Route>
 
-      {/* Logoutdan keyin yo‘naltirish */}
+      {/* Noto‘g‘ri yo‘llar */}
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

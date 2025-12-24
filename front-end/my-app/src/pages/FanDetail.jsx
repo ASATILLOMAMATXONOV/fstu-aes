@@ -15,7 +15,11 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import Navbar from "../components/Navbar";
+<<<<<<< HEAD
 // import Footer from "../components/Footer";
+=======
+import Footer from "../components/Footer";
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
 import TopNavbar from "../components/TopNavbar";
 import { BASE_API_URL, getCurrentLanguage } from "../config";
 
@@ -265,7 +269,11 @@ const FanDetail = () => {
           )}
         </Paper>
       </Container>
+<<<<<<< HEAD
       {/* <Footer /> */}
+=======
+      <Footer />
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
     </>
   );
 };

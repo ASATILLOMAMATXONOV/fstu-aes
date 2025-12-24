@@ -96,6 +96,7 @@ const HomePage = () => {
     return link.title_uz;
   };
   
+<<<<<<< HEAD
 const handleMenuClick = (link) => {
   const title = (link[`title_${language}`] || link.title_uz || "").trim();
   const titleEn = (link.title_en || "").trim().toUpperCase();
@@ -119,6 +120,21 @@ const handleMenuClick = (link) => {
 };
 
 
+=======
+  const handleMenuClick = (menuTitle) => {
+    const upperTitle = menuTitle.trim().toUpperCase();
+  
+    if (upperTitle === "STAFF") {
+      navigate("/staff");
+    } else if (upperTitle === "PROGRAMS") {
+      navigate("/programs");
+    } else if (upperTitle === "COURSES") {
+      navigate("/fanlar");
+    } else {
+      navigate(`/pages/${encodeURIComponent(menuTitle)}`);
+    }
+  };
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
   
   
   
@@ -154,6 +170,7 @@ const getHomeTitle = () => {
             <span>{item.title[language]}</span>
             </div>
             <div className="card-overlay">
+<<<<<<< HEAD
            <ul className="card-menu">
   {(menus[item.key] || []).map((link, i) => (
     <li key={i}>
@@ -166,6 +183,22 @@ const getHomeTitle = () => {
     </li>
   ))}
 </ul>
+=======
+            <ul className="card-menu">
+            {(menus[item.key] || []).map((link, i) => (
+              <li key={i}>
+                <span
+                  className="clickable-link"
+                  onClick={() => handleMenuClick(link.title_en)}
+                >
+                  {getTitle(link)}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
 
 
             </div>

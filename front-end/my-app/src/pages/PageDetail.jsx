@@ -10,7 +10,11 @@ import {
 
 import Navbar from "../components/Navbar";
 import TopNavbar from "../components/TopNavbar";
+<<<<<<< HEAD
 // import Footer from "../components/Footer";
+=======
+import Footer from "../components/Footer";
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
 import parse from "html-react-parser";
 
 import "../assets/style/PageDetail.css";
@@ -109,7 +113,11 @@ const PageDetail = () => {
         </Fade>
       </Container>
 
+<<<<<<< HEAD
       {/* <Footer /> */}
+=======
+      <Footer />
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
     </>
   );
 };

@@ -15,8 +15,13 @@ import {
 } from "@mui/material";
 import Navbar from "../components/Navbar";
 import TopNavbar from "../components/TopNavbar";
+<<<<<<< HEAD
 // import Footer from "../components/Footer";
 import { BASE_API_URL, BASE_URL } from "../config";
+=======
+import Footer from "../components/Footer";
+import { BASE_API_URL, BASE_URL } from "../config"; // Import BASE_API_URL and BASE_URL
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
 
 const NewPageDetail = () => {
   const { id } = useParams();
@@ -24,10 +29,16 @@ const NewPageDetail = () => {
   const [language] = useState(localStorage.getItem("language") || "uz");
   const [visible, setVisible] = useState(false);
 
+<<<<<<< HEAD
   // ✅ axios chaqiruvi useEffect ichida bo‘lishi kerak
   useEffect(() => {
     axios
       .get(`${BASE_API_URL}/newpages/id/${id}`)
+=======
+  useEffect(() => {
+    axios
+      .get(`${BASE_API_URL}/newpages/id/${id}`) // Use BASE_API_URL
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
       .then((res) => {
         setPage(res.data);
         setVisible(true);
@@ -36,15 +47,23 @@ const NewPageDetail = () => {
         console.error("❌ Sahifa topilmadi:", err);
         setPage(null);
       });
+<<<<<<< HEAD
   }, [id]); // <-- faqat id o‘zgarsa qayta ishlaydi
+=======
+  }, [id]);
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
 
   const getTitle = () => {
     if (!page) return "";
     return (
+<<<<<<< HEAD
       page[`title_${language}`] ||
       page.title_uz ||
       page.title_en ||
       page.title_ru
+=======
+      page[`title_${language}`] || page.title_uz || page.title_en || page.title_ru
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
     );
   };
 
@@ -70,22 +89,39 @@ const NewPageDetail = () => {
     }
 
     if (page.image_url.startsWith("uploads/")) {
+<<<<<<< HEAD
       return `${BASE_URL}/${page.image_url}`;
+=======
+      return `${BASE_URL}/${page.image_url}`; // Use BASE_URL
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
     }
 
     return page.image_url;
   };
 
+<<<<<<< HEAD
   const transformContent = (html) =>
     html.replace(
       /<img([^>]+)>/g,
       '<img style="max-width:100%; height:auto; border-radius:10px; margin: 15px 0;" $1 />'
     );
+=======
+  const transformContent = (html) => {
+    return html.replace(
+      /<img([^>]+)>/g,
+      '<img style="max-width:100%; height:auto; border-radius:10px; margin: 15px 0;" $1 />'
+    );
+  };
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
 
   return (
     <>
       <Navbar />
       <TopNavbar />
+<<<<<<< HEAD
+=======
+      <Box />
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
       <Container sx={{ mt: 15, mb: 8 }}>
         <Fade in={visible} timeout={700}>
           <Box>
@@ -105,8 +141,12 @@ const NewPageDetail = () => {
                         {getTitle()}
                       </Typography>
                       <Typography variant="subtitle1" sx={{ mb: 1 }}>
+<<<<<<< HEAD
                         <strong>Lavozim:</strong>{" "}
                         {page.position || "Associate Professor"}
+=======
+                        <strong>Lavozim:</strong> {page.position || "Associate Professor"}
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
                       </Typography>
                       {page.phone && (
                         <Typography>
@@ -122,11 +162,15 @@ const NewPageDetail = () => {
                       {page.scholar_link && (
                         <Typography>
                           <strong>Scholar:</strong>{" "}
+<<<<<<< HEAD
                           <Link
                             href={page.scholar_link}
                             target="_blank"
                             rel="noopener"
                           >
+=======
+                          <Link href={page.scholar_link} target="_blank" rel="noopener">
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
                             Google Scholar
                           </Link>
                         </Typography>
@@ -137,6 +181,7 @@ const NewPageDetail = () => {
 
                 <Card sx={{ p: 4, boxShadow: 3 }}>
                   <CardContent>
+<<<<<<< HEAD
                     <Typography
                       variant="h5"
                       fontWeight="bold"
@@ -145,6 +190,12 @@ const NewPageDetail = () => {
                     >
                       Portfolio Ma’lumotlari
                     </Typography>
+=======
+                    <Typography variant="h5" fontWeight="bold" gutterBottom color="primary">
+                      Portfolio Ma’lumotlari
+                    </Typography>
+
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
                     <Box
                       sx={{
                         mt: 3,
@@ -177,9 +228,17 @@ const NewPageDetail = () => {
           </Box>
         </Fade>
       </Container>
+<<<<<<< HEAD
       {/* <Footer /> */}
+=======
+      <Footer />
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
     </>
   );
 };
 
+<<<<<<< HEAD
 export default NewPageDetail;
+=======
+export default NewPageDetail;
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b

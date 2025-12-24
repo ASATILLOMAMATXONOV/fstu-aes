@@ -10,7 +10,11 @@ const Researchgrid = () => {
 
   const localizedText = {
     uz: {
+<<<<<<< HEAD
       header: 'Ilg\'or muhandislik maktabi "INDUSTRIAL ENGINEERING"',
+=======
+      header: 'ILMIY MUHANDISLIK MAKTABI "INDUSTRIAL ENGINEERING"',
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
       cards: [
         {
           title: "O‘qituvchilar",
@@ -27,11 +31,19 @@ const Researchgrid = () => {
           path: "/fanlar",
         },
         {
+<<<<<<< HEAD
           title: "Ro'yxatdan o'tish",
           description: "Oliy muandislik maktabiga ro'yhatdan o'tish.",
           bgcolor: "#E8F5E9",
           icon: <HandshakeIcon sx={{ fontSize: 40, color: "#388E3C" }} />,
           path: "https://aes-admission.fstu.uz",
+=======
+          title: "Hamkorlar",
+          description: "Xalqaro va mahalliy hamkor tashkilotlar, institutlar va universitetlar.",
+          bgcolor: "#E8F5E9",
+          icon: <HandshakeIcon sx={{ fontSize: 40, color: "#388E3C" }} />,
+          path: "/",
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
         },
       ],
     },
@@ -53,11 +65,19 @@ const Researchgrid = () => {
           path: "/fanlar",
         },
         {
+<<<<<<< HEAD
           title: "Зарегистрироваться",
           description: "Поступить в высшую инженерную школу",
           bgcolor: "#E8F5E9",
           icon: <HandshakeIcon sx={{ fontSize: 40, color: "#388E3C" }} />,
           path: "https://aes-admission.fstu.uz",
+=======
+          title: "Партнеры",
+          description: "Местные и международные партнерские учреждения и университеты.",
+          bgcolor: "#E8F5E9",
+          icon: <HandshakeIcon sx={{ fontSize: 40, color: "#388E3C" }} />,
+          path: "/",
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
         },
       ],
     },
@@ -79,11 +99,19 @@ const Researchgrid = () => {
           path: "/fanlar",
         },
         {
+<<<<<<< HEAD
           title: "Sign up",
           description: "Enroll in a higher engineering school.",
           bgcolor: "#E8F5E9",
           icon: <HandshakeIcon sx={{ fontSize: 40, color: "#388E3C" }} />,
           path: "https://aes-admission.fstu.uz/",
+=======
+          title: "Partners",
+          description: "International and local academic partners, institutions, and universities.",
+          bgcolor: "#E8F5E9",
+          icon: <HandshakeIcon sx={{ fontSize: 40, color: "#388E3C" }} />,
+          path: "/",
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
         },
       ],
     },

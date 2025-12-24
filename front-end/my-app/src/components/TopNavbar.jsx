@@ -17,19 +17,31 @@ const menuMap = {
     "BO'LIM": "menus_department",
     "TADQIQOT": "menus_research",
     "TA'LIM": "menus_teaching",
+<<<<<<< HEAD
     "TA'LIMIY INFRASTRUKTURA": "menus_academic",
+=======
+    "ILMIY INFRASTRUKTURA": "menus_academic",
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
   },
   ru: {
     "ОТДЕЛ": "menus_department",
     "ИССЛЕДОВАНИЕ": "menus_research",
     "ОБРАЗОВАНИЕ": "menus_teaching",
+<<<<<<< HEAD
     "АКАДЕМИЧЕСКАЯ ИНФРАСТРУКТУРА": "menus_academic",
+=======
+    "НАУЧНАЯ ИНФРАСТРУКТУРА": "menus_academic",
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
   },
   en: {
     "THE DEPARTMENT": "menus_department",
     "RESEARCH": "menus_research",
     "TEACHING": "menus_teaching",
+<<<<<<< HEAD
     "ACADEMIC INFRASTRUCTURE": "menus_academic",
+=======
+    "ACADEMIC INFOSTRUCTURE": "menus_academic",
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
   }
 };
 

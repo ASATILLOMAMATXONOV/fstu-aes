@@ -16,7 +16,11 @@ import {
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Navbar";
+<<<<<<< HEAD
 // import Footer from "../components/Footer";
+=======
+import Footer from "../components/Footer";
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
 import TopNavbar from "../components/TopNavbar";
 import { BASE_API_URL, getCurrentLanguage } from "../config"; // ✅ Yangi global konfiguratsiya
 
@@ -127,6 +131,10 @@ const Fanlar = () => {
           </Box>
         </Container>
 
+<<<<<<< HEAD
+=======
+        <Footer />
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
       </Box>
     </>
   );

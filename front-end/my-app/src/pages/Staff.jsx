@@ -18,6 +18,10 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Navbar from "../components/Navbar";
 import TopNavbar from "../components/TopNavbar";
+<<<<<<< HEAD
+=======
+import Footer from "../components/Footer";
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
 import { BASE_API_URL, getCurrentLanguage } from "../config"; // ✅ CONFIG import
 
 // TEXT va CATEGORIES - o‘zgartirilmagan
@@ -198,6 +202,10 @@ const Staff = () => {
           </Box>
         </Fade>
       </Container>
+<<<<<<< HEAD
+=======
+      <Footer />
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
     </>
   );
 };

@@ -33,18 +33,17 @@ const Sidebar = () => {
 
   const navItems = [
     { name: "Dashboard", path: "/", icon: <LayoutDashboard size={22} /> },
+    { name: "Top menu", path: "/Topmenu", icon: <ListOrdered size={22} /> },
     { name: "Banners", path: "/carousel", icon: <Image size={22} /> },
     { name: "Menus", path: "/menus", icon: <Menu size={22} /> },
-    { name: "Top menu", path: "/Topmenu", icon: <ListOrdered size={22} /> }, 
-    { name: "Page", path: "/Page", icon: <Book size={22} /> }, 
+    { name: "Page", path: "/Page", icon: <Book size={22} /> },
     { name: "Lists", path: "/submenu", icon: <TableProperties size={22} /> },
     { name: "News & Event", path: "/NewsEvent", icon: <Newspaper size={22} /> },
     { name: "Staff table", path: "/statistics", icon: <Users size={22} /> },
-    { name: "New-Button", path: "/Newbut", icon: <PlusSquare size={22} /> }, 
-    { name: "Sidebar", path: "/Side", icon: <PanelRight size={22} /> }, 
-    { name: "Sciences", path: "/Fanlar", icon: <Atom size={22} />  }, 
-    { name: "Department", path: "/Department", icon: <Building2 size={22} />  }, 
-  
+    { name: "New-Button", path: "/Newbut", icon: <PlusSquare size={22} /> },
+    { name: "Sidebar", path: "/Side", icon: <PanelRight size={22} /> },
+    { name: "Sciences", path: "/Fanlar", icon: <Atom size={22} /> },
+    { name: "Department", path: "/Department", icon: <Building2 size={22} /> }
   ];
 
   return (
@@ -57,9 +56,11 @@ const Sidebar = () => {
     >
       {/* Logo */}
       <div className="flex items-center space-x-2 mb-6">
-       <img src={profileImg} alt="Logo" className="w-8 h-8 rounded-full" />
+        <img src={profileImg} alt="Logo" className="w-8 h-8 rounded-full" />
         {isExpanded && (
-          <span className="text-lg font-bold whitespace-nowrap">Admin Panel</span>
+          <span className="text-lg font-bold whitespace-nowrap">
+            Admin Panel
+          </span>
         )}
       </div>
 
@@ -70,12 +71,16 @@ const Sidebar = () => {
             <Link
               to={item.path}
               className={`flex items-center p-2 rounded-lg transition hover:bg-indigo-100 ${
-                location.pathname === item.path ? "bg-indigo-100 font-semibold" : ""
+                location.pathname === item.path
+                  ? "bg-indigo-100 font-semibold"
+                  : ""
               }`}
             >
               <span className="text-xl">{item.icon}</span>
               {isExpanded && (
-                <span className="ml-3 text-sm whitespace-nowrap">{item.name}</span>
+                <span className="ml-3 text-sm whitespace-nowrap">
+                  {item.name}
+                </span>
               )}
             </Link>
           </li>

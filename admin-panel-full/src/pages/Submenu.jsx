@@ -14,7 +14,7 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-  TextField, // ✅ MUHIM
+  TextField,
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -27,26 +27,18 @@ import { BASE_API_URL } from "../config";
 /* ---------------- QUILL ---------------- */
 const quillModules = {
   toolbar: [
-     [{ header: [1, 2, 3, false] }],
-      ["bold", "italic", "underline", "strike"],
-      ["blockquote", "code-block"],
-      [{ list: "ordered" }, { list: "bullet" }],
-      [{ script: "sub" }, { script: "super" }],
-      [{ indent: "-1" }, { indent: "+1" }],
-      [{ direction: "rtl" }],
-      [{ align: [] }],
-      [{ color: [] }, { background: [] }],
-      [{ font: [] }],
-      [{ size: ["small", false, "large", "huge"] }],
-      ["link", "image", "video"],
-      ["clean"],
+    [{ header: [1, 2, 3, false] }],
+    ["bold", "italic", "underline", "strike"],
+    ["blockquote", "code-block"],
+    [{ list: "ordered" }, { list: "bullet" }],
+    [{ color: [] }, { background: [] }],
+    ["link", "image", "video"],
+    ["clean"],
   ],
 };
 
 const quillFormats = [
   "header",
-  "font",
-  "size",
   "bold",
   "italic",
   "underline",
@@ -55,10 +47,6 @@ const quillFormats = [
   "code-block",
   "list",
   "bullet",
-  "script",
-  "indent",
-  "direction",
-  "align",
   "color",
   "background",
   "link",
@@ -84,29 +72,21 @@ const Submenu = () => {
   };
 
   /* FETCH DETAIL */
-const fetchPageDetails = async (page) => {
-  try {
-    const res = await fetch(
-      `${BASE_API_URL}/api/submenu/detail/${page.id}?source=${page.source}`
-    );
-
-    const data = await res.json();
-
-    // 🔥 FAQAT DETAIL'DAN KELGAN TO‘LIQ DATA
-    setEditPage({
-      ...data,
-      source: page.source,
-    });
-  } catch (err) {
-    console.error("Detail olishda xato:", err);
-  }
-};
-
+  const fetchPageDetails = async (page) => {
+    try {
+      const res = await fetch(
+        `${BASE_API_URL}/api/submenu/detail/${page.id}?source=${page.source}`
+      );
+      const data = await res.json();
+      setEditPage({ ...data, source: page.source });
+    } catch (err) {
+      console.error("Detail olishda xato:", err);
+    }
+  };
 
   /* SAVE */
   const handleSave = async () => {
     if (!editPage) return;
-
     const { id, source, ...body } = editPage;
 
     try {
@@ -115,7 +95,6 @@ const fetchPageDetails = async (page) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-
       setEditPage(null);
       fetchPages();
     } catch (err) {
@@ -126,14 +105,12 @@ const fetchPageDetails = async (page) => {
   /* DELETE */
   const handleDelete = async () => {
     if (!deleteTarget) return;
-
     const { id, source } = deleteTarget;
 
     try {
       await fetch(`${BASE_API_URL}/api/submenu/${id}?source=${source}`, {
         method: "DELETE",
       });
-
       setDeleteTarget(null);
       fetchPages();
     } catch (err) {
@@ -147,13 +124,11 @@ const fetchPageDetails = async (page) => {
 
   return (
     <Box p={3}>
-      {/* HEADER */}
       <Paper sx={{ p: 3, mb: 3 }}>
         <Typography variant="h6">📄 Sahifalar</Typography>
         <Typography variant="h4">{pages.length}</Typography>
       </Paper>
 
-      {/* TABLE */}
       <Paper>
         <Table>
           <TableHead>
@@ -165,7 +140,6 @@ const fetchPageDetails = async (page) => {
               <TableCell>Amallar</TableCell>
             </TableRow>
           </TableHead>
-
           <TableBody>
             {pages.map((p) => (
               <React.Fragment key={`${p.source}-${p.id}`}>
@@ -177,7 +151,6 @@ const fetchPageDetails = async (page) => {
                   <TableCell>
                     <Stack direction="row" spacing={1}>
                       <Button
-                        size="small"
                         variant="outlined"
                         startIcon={<EditIcon />}
                         onClick={() => fetchPageDetails(p)}
@@ -185,7 +158,6 @@ const fetchPageDetails = async (page) => {
                         Edit
                       </Button>
                       <Button
-                        size="small"
                         color="error"
                         variant="outlined"
                         startIcon={<DeleteIcon />}
@@ -197,80 +169,41 @@ const fetchPageDetails = async (page) => {
                   </TableCell>
                 </TableRow>
 
-                {/* EDIT FORM */}
                 {editPage &&
                   editPage.id === p.id &&
                   editPage.source === p.source && (
                     <TableRow>
                       <TableCell colSpan={5}>
                         <Paper sx={{ p: 3, backgroundColor: "#FFFDE7" }}>
-                          {[
-                            { code: "uz", label: "O‘zbekcha" },
-                            { code: "ru", label: "Русский" },
-                            { code: "en", label: "English" },
-                          ].map(({ code, label }) => (
-                            <Box key={code} mb={5}>
-                              <Typography
-                                variant="subtitle1"
-                                fontWeight="bold"
-                                mb={1}
-                              >
-                                {label}
-                              </Typography>
-
-                             <TextField
-  fullWidth
-  size="small"
-  label={`Title (${label})`}
-  value={editPage[`title_${code}`] ?? ""}
-  onChange={(e) => {
-    const field = `title_${code}`;
-    const value = e.target.value;
-
-    setEditPage((prev) => {
-      if (prev[field] === value) return prev;
-
-      return {
-        ...prev,
-        [field]: value,
-      };
-    });
-  }}
-/>
-
-
-<ReactQuill
-  theme="snow"
-  value={editPage[`content_${code}`] ?? ""}
-  onChange={(value) => {
-    const field = `content_${code}`;
-
-    setEditPage((prev) => {
-      // agar qiymat o‘zgarmagan bo‘lsa, qayta set qilmaymiz
-      if (prev[field] === value) return prev;
-
-      return {
-        ...prev,
-        [field]: value, // 👈 HTML TO‘LIQ SAQLANADI
-      };
-    });
-  }}
-  modules={quillModules}
-  formats={quillFormats}
-/>
-
-
-
-
-
+                          {["uz", "ru", "en"].map((code) => (
+                            <Box key={code} mb={4}>
+                              <TextField
+                                fullWidth
+                                label={`Title (${code})`}
+                                value={editPage[`title_${code}`] || ""}
+                                onChange={(e) =>
+                                  setEditPage({
+                                    ...editPage,
+                                    [`title_${code}`]: e.target.value,
+                                  })
+                                }
+                              />
+                              <ReactQuill
+                                theme="snow"
+                                value={editPage[`content_${code}`] || ""}
+                                onChange={(val) =>
+                                  setEditPage({
+                                    ...editPage,
+                                    [`content_${code}`]: val,
+                                  })
+                                }
+                                modules={quillModules}
+                                formats={quillFormats}
+                              />
                             </Box>
                           ))}
 
-                          <Stack
-                            direction="row"
-                            spacing={2}
-                            justifyContent="flex-end"
-                          >
+                          <Stack direction="row" spacing={2} justifyContent="end">
                             <Button
                               variant="contained"
                               startIcon={<SaveIcon />}
@@ -296,7 +229,6 @@ const fetchPageDetails = async (page) => {
         </Table>
       </Paper>
 
-      {/* DELETE CONFIRM */}
       <Dialog open={!!deleteTarget} onClose={() => setDeleteTarget(null)}>
         <DialogTitle>O‘chirish</DialogTitle>
         <DialogContent>

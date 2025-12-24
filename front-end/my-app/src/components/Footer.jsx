@@ -26,7 +26,11 @@ const Footer = () => {
       programs: "Dasturlar",
       contact: "Bog‘lanish",
       contactTitle: "Aloqa",
+<<<<<<< HEAD
       address: " Farg'ona shahar, Farg'ona ko'chasi 86-uy",
+=======
+      address: "Farg‘ona shahri, F. Xo‘jayev ko‘chasi, 86-uy",
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
       email: "info@fstu.uz",
       phone: "+998 73 244 56 78",
       copyright: "Barcha huquqlar himoyalangan.",
@@ -40,7 +44,11 @@ const Footer = () => {
       programs: "Программы",
       contact: "Контакты",
       contactTitle: "Контактная информация",
+<<<<<<< HEAD
       address: " Farg'ona shahar, Farg'ona ko'chasi 86-uy",
+=======
+      address: "г. Фергана, ул. Ф. Ходжаева, 86",
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
       email: "info@fstu.uz",
       phone: "+998 73 244 56 78",
       copyright: "Все права защищены.",
@@ -54,7 +62,11 @@ const Footer = () => {
       programs: "Programs",
       contact: "Contact",
       contactTitle: "Contact Info",
+<<<<<<< HEAD
       address: " Farg'ona shahar, Farg'ona ko'chasi 86-uy",
+=======
+      address: "86 F. Khojayev Street, Fergana City",
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
       email: "info@fstu.uz",
       phone: "+998 73 244 56 78",
       copyright: "All rights reserved.",

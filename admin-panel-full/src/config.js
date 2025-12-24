@@ -1,5 +1,4 @@
-// Local test qilmoqchi bo‘lsangiz:
-// export const BASE_API_URL = "http://localhost:3001";
+export const BASE_API_URL = "https://aes.fstu.uz"; // ✅ to‘g‘ri IP
 
-// Serverda ishlatmoqchi bo‘lsangiz (nginx orqali):
-export const BASE_API_URL = "https://aes.fstu.uz"; 
+
+

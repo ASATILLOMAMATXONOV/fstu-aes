@@ -15,6 +15,7 @@
   margin-bottom: 24px;
 }
 
+<<<<<<< HEAD
 .card-overlay {
   position: absolute;
   inset: 0;
@@ -52,6 +53,8 @@
 .card-menu::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+=======
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
 
 .card-grid {
   display: flex;
@@ -104,7 +107,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+<<<<<<< HEAD
   padding-bottom: 16px;
+=======
+  padding-bottom: 50px;
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
 }
 
 .card:hover .card-overlay {

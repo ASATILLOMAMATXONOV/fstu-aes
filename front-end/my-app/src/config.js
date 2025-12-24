@@ -1,14 +1,23 @@
 // ✅ AGAR LOCALDA ISHLASANGIZ:
+<<<<<<< HEAD
 // export const BASE_URL = "http://localhost:3001"; 
 
 // ✅ AGAR ONLINEDA ISHLASANGIZ:
 export const BASE_URL = "https://aes.fstu.uz";  // 🚀 domeningiz
 export const BASE_API_URL = `${BASE_URL}/api`;  // faqat bitta API root
 export const BASE_FRONT_URL = "https://aes.fstu.uz"; // frontend ham shu domen
+=======
+export const BASE_URL = "https://aes.fstu.uz"; // LOCAL backend
+// export const BASE_URL = "http://localhost:3001"; // LOCAL backend
+export const BASE_API_URL = `${BASE_URL}/api`;
+export const BASE_FRONT_URL = "http://localhost:3000";
+
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
 
 // ✅ Image (or file) upload URL
 export const IMAGE_UPLOAD_URL = `${BASE_API_URL}/upload/image`;
 
+<<<<<<< HEAD
 // ✅ Menu API endpoints (TO‘G‘RI variant)
 export const MENU_ENDPOINTS = {
   department: `${BASE_API_URL}/menus?category=THE%20DEPARTMENT`,
@@ -18,6 +27,16 @@ export const MENU_ENDPOINTS = {
 };
 
 
+=======
+// ✅ Menu API endpoints
+export const MENU_ENDPOINTS = {
+  department: `${BASE_API_URL}/menus/menus_department`,
+  research: `${BASE_API_URL}/menus/menus_research`,
+  teaching: `${BASE_API_URL}/menus/menus_teaching`,
+  academic: `${BASE_API_URL}/menus/menus_academic`,
+};
+
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
 // ✅ Function to get the current language
 export const getCurrentLanguage = () =>
   localStorage.getItem("language") || "uz";

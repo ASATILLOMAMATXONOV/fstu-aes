@@ -2,7 +2,11 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../db");
 
+<<<<<<< HEAD
 // [GET] Bitta fan: sahifa, kategoriyalar, mavzular, new_pages bilan
+=======
+// [GET] Bitta fan: sahifa, kategoriyalar, mavzular, newpage bilan
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
 
@@ -14,6 +18,7 @@ router.get("/:id", async (req, res) => {
     }
     const fan = fanResult.rows[0];
 
+<<<<<<< HEAD
     // 2. PAGES - eski sahifa (menu = fan.nom_uz)
     const pageResult = await pool.query(
       "SELECT * FROM pages WHERE menu = $1 LIMIT 1",
@@ -35,6 +40,18 @@ router.get("/:id", async (req, res) => {
       "SELECT * FROM kategoriyalar WHERE fan_id = $1 ORDER BY id",
       [id]
     );
+=======
+    // 2. PAGES - eski sahifa ma’lumoti
+    const pageResult = await pool.query("SELECT * FROM pages WHERE menu = $1 LIMIT 1", [fan.nom_uz]);
+    const page = pageResult.rows[0] || null;
+
+    // 3. NEWPAGES - yangi sahifa ma’lumoti
+    const newPageResult = await pool.query("SELECT * FROM newpages WHERE menu = $1 LIMIT 1", [fan.nom_uz]);
+    const newpage = newPageResult.rows[0] || null;
+
+    // 4. KATEGORIYALAR + MAVZULAR
+    const kategoriyaResult = await pool.query("SELECT * FROM kategoriyalar WHERE fan_id = $1 ORDER BY id", [id]);
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
     const kategoriyalar = kategoriyaResult.rows;
 
     for (let kategoriya of kategoriyalar) {
@@ -54,7 +71,11 @@ router.get("/:id", async (req, res) => {
     });
 
   } catch (err) {
+<<<<<<< HEAD
     console.error("❌ Fan haqida ma'lumot olishda xato:", err.message);
+=======
+    console.error("❌ Fan haqida ma'lumot olishda xato:", err);
+>>>>>>> 0ab9d172d6e8b505adef20f2d54f0663f9d0e58b
     res.status(500).json({ error: "Server xatosi" });
   }
 });

@@ -7,6 +7,7 @@ import { Pencil, Trash2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { BASE_API_URL } from "../config";
 
+
 const Menus = () => {
   const [values, setValues] = useState({ uz: "", ru: "", en: "" });
   const [menuList, setMenuList] = useState([]);
@@ -20,6 +21,7 @@ const Menus = () => {
   };
 
   // 💾 Saqlash
+
   const handleSave = async () => {
     if (!values.uz && !values.ru && !values.en) {
       alert("❗ Iltimos, kamida bitta tilga ma’lumot kiriting.");
@@ -29,7 +31,6 @@ const Menus = () => {
       alert("❗ Iltimos, bo‘limni tanlang.");
       return;
     }
-
     const payload = {
       uz: values.uz,
       ru: values.ru,
@@ -44,10 +45,12 @@ const Menus = () => {
         body: JSON.stringify(payload),
       });
 
+
       if (response.ok) {
         setValues({ uz: "", ru: "", en: "" });
         fetchMenus();
         alert("✅ Ma'lumot saqlandi!");
+
       } else {
         alert("❌ Xatolik: saqlab bo‘lmadi");
       }
@@ -55,6 +58,7 @@ const Menus = () => {
       console.error("❌ Tarmoq xatosi:", error);
       alert("❌ Serverga ulanishda xato");
     }
+
   };
 
   // 📥 Menyularni olish
@@ -99,16 +103,18 @@ const Menus = () => {
     }
   };
 
+
   // 🔄 useEffect — har safar qidiruv yoki kategoriya o‘zgarsa
   useEffect(() => {
     fetchMenus();
   }, [searchTerm, selectedCategory]);
 
+
   return (
     <div className="p-4 space-y-6">
       <h2 className="text-2xl font-bold">Yangi menyularni kiriting</h2>
 
-      {/* --- Til bo‘yicha inputlar --- */}
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <MenusBox
           title="Oʻzbekcha"
@@ -130,6 +136,7 @@ const Menus = () => {
         />
       </div>
 
+
       {/* --- Bo‘lim tanlash --- */}
       <div>
         <h3 className="text-lg font-semibold mb-4 text-gray-800">Bo‘limni tanlang:</h3>
@@ -148,6 +155,7 @@ const Menus = () => {
                     ? "bg-blue-600 text-white border-blue-700 shadow-lg"
                     : "bg-white hover:bg-blue-50 border-gray-300"
                 }`}
+
             >
               <input
                 type="radio"
@@ -163,24 +171,6 @@ const Menus = () => {
         </div>
       </div>
 
-      {/* --- Saqlash tugmasi --- */}
-      <div className="flex justify-end">
-        <button
-          onClick={handleSave}
-          disabled={!selectedCategory}
-          className={`py-2 px-6 rounded-xl font-semibold transition-all duration-300 ${
-            selectedCategory
-              ? "bg-blue-600 hover:bg-blue-700 text-white"
-              : "bg-gray-400 text-white cursor-not-allowed"
-          }`}
-        >
-          Saqlash
-        </button>
-      </div>
-
-      <hr className="border-t-2 border-blue-500 mt-6" />
-
-      {/* --- Jadval --- */}
       <div className="mt-6">
         <h3 className="text-xl font-semibold mb-2">Menu</h3>
 
@@ -193,9 +183,12 @@ const Menus = () => {
         />
 
         <table className="w-full table-fixed border border-gray-300 text-left">
+
           <thead className="bg-gray-100">
             <tr>
               <th className="p-2 border w-1/12">ID</th>
+
+
               <th className="p-2 border w-2/12">Uz</th>
               <th className="p-2 border w-2/12">Ru</th>
               <th className="p-2 border w-2/12">En</th>
@@ -203,6 +196,7 @@ const Menus = () => {
               <th className="p-2 border w-2/12">Actions</th>
             </tr>
           </thead>
+
           <tbody>
             {menuList.length === 0 ? (
               <tr>
@@ -242,6 +236,7 @@ const Menus = () => {
               ))
             )}
           </tbody>
+
         </table>
       </div>
     </div>
