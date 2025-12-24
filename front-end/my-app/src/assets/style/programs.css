@@ -1,0 +1,34 @@
+.hover-button {
+  position: relative;
+  display: inline-block;
+  padding: 12px 28px 12px 24px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  min-width: 100px;
+  text-align: center;
+}
+
+.hover-button .arrow {
+  display: inline-block;
+  margin-left: 0;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all 0.3s ease-in-out;
+}
+
+.hover-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.hover-button:hover .arrow {
+  margin-left: 10px;
+  opacity: 1;
+  transform: translateX(0);
+}
